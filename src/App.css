@@ -40,3 +40,22 @@
 .read-the-docs {
   color: #888;
 }
+
+.nav {
+  height: 50px;
+  width: 485px;
+
+}
+
+.nav button {
+  border: greenyellow solid 2px;
+  height: 50px;
+  width: 200px;
+  background-color: #888;
+  transition: all 0.2s ease-in;
+}
+
+.nav button:hover {
+  background-color: greenyellow;
+  color: black;
+}
