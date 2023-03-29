@@ -34,16 +34,15 @@ const pokemonList = [
 
 
 function App() {
-const [user, setUser] = useState({pokemon : pokemonList[0]})
 
-  const handleClickNext = (event) => {
-    setUser({pokemon : pokemonList[1]})
-  }
+  const [index,  setIndex] = useState(0); 
+  
   return (
     <div>
-     <PokemonCard pokemon ={pokemonList[0]} />
-     {/* <button onClick={handleClick}>Previous</button> */}
-     <button onClick={handleClickNext}>Next</button>
+      
+     <PokemonCard pokemon ={pokemonList[index]} />
+     {index > 0 ? <button onClick={() => setIndex(index - 1)}>Previous</button> : ""}
+     {index < pokemonList.length -1 ? <button onClick={() => setIndex(index + 1)}>Next</button> : ""}
     </div>
   );
 }
