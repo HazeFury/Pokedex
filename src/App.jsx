@@ -1,11 +1,10 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useEffect, useState } from "react";
+import reactLogo from "./assets/react.svg";
+import viteLogo from "/vite.svg";
+import "./App.css";
 
-import PokemonCard from "./components/PokemonCard"
-import NavBar from './components/NavBar'
-
+import PokemonCard from "./components/PokemonCard";
+import NavBar from "./components/NavBar";
 
 const pokemonList = [
   {
@@ -33,18 +32,16 @@ const pokemonList = [
   },
 ];
 
-
-
 function App() {
   const [index, setIndex] = useState(0);
+  useEffect( () => {alert("hello pokemon trainer :)")}, [] )
 
   return (
     <div>
-      <NavBar index={index} setIndex={setIndex} pokemonList={pokemonList} />
+      <NavBar index={index} setIndex={setIndex} pokemon={pokemonList} />
       <PokemonCard pokemon={pokemonList[index]} />
     </div>
   );
 }
 
 export default App;
-
