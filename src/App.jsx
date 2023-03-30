@@ -33,13 +33,23 @@ const pokemonList = [
 ];
 
 function App() {
-  const [index, setIndex] = useState(0);
-  useEffect( () => {alert("hello pokemon trainer :)")}, [] )
+  useEffect(() => {
+    alert("hello pokemon trainer :)");
+  }, []);
 
+  const [chosenPokemon, setChosenPokemon] = useState(0);
   return (
     <div>
-      <NavBar index={index} setIndex={setIndex} pokemon={pokemonList} />
-      <PokemonCard pokemon={pokemonList[index]} />
+      {pokemonList.map((creature, index) => (
+        <NavBar
+          key={creature.name}
+          index={index}
+          name={creature.name}
+          setChosenPokemon={setChosenPokemon}
+        />
+      ))}
+
+      <PokemonCard pokemon={pokemonList[chosenPokemon]} />
     </div>
   );
 }

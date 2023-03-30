@@ -42,17 +42,18 @@
 }
 
 .nav {
-  height: 50px;
-  width: 485px;
+  height: 70px;
+  width: 500px;
 
 }
 
 .nav button {
   border: greenyellow solid 2px;
-  height: 50px;
-  width: 200px;
+  height: 60px;
+  width: 300px;
   background-color: #888;
   transition: all 0.2s ease-in;
+  font-size: 1.5rem;
 }
 
 .nav button:hover {
