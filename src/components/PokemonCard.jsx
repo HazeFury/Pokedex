@@ -1,22 +1,25 @@
 import "../PokemonCard.css"
-import PropTypes from "prop-types";
+
 
 function PokemonCard({pokemon}) {
 
   return (
-    <figure>
-      {pokemon.imgSrc ? <img src= {pokemon.imgSrc} alt={pokemon.name}/>  :  <p>???</p>}
+    <figure> 
+      <img src= {pokemon.image} alt={pokemon.name}/> {/* use pokemon.sprite to lower the quality and speed up the loading*/ }
       <figcaption>{pokemon.name}</figcaption>
+      <div className="info">
+       <div className="ID">Pokedex ID : {pokemon.pokedexId}</div>
+       <div className="HP">Points de Vie : {pokemon.stats.HP}</div>
+       <div className="Atck">Attaque : {pokemon.stats.attack}</div>
+       <div className="Type">Type : {pokemon.apiTypes[0].name} </div>
+
+
+      </div>
+    
     </figure>
   );
   };
   
- PokemonCard.propTypes = {
-  pokemon: PropTypes.shape({
-    name: PropTypes.string.isRequired,
-    imgSrc: PropTypes.string,
-  }).isRequired
- };
  
 
   export default PokemonCard; 

@@ -1,55 +1,43 @@
 import { useEffect, useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
+import axios from "axios";
 import "./App.css";
 
 import PokemonCard from "./components/PokemonCard";
 import NavBar from "./components/NavBar";
 
-const pokemonList = [
-  {
-    name: "bulbasaur",
-    imgSrc:
-      "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png",
-  },
-  {
-    name: "charmander",
-    imgSrc:
-      "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/4.png",
-  },
-  {
-    name: "squirtle",
-    imgSrc:
-      "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/7.png",
-  },
-  {
-    name: "pikachu",
-    imgSrc:
-      "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/25.png",
-  },
-  {
-    name: "mew",
-  },
-];
-
 function App() {
-  useEffect(() => {
-    alert("hello pokemon trainer :)");
-  }, []);
+  const [actualPokemon, setActualPokemon] = useState(null);
+  const [pokemonIndex, setPokemonIndex] = useState(0);
+  console.log(pokemonIndex);
 
-  const [chosenPokemon, setChosenPokemon] = useState(0);
+  const getPokemon = () => {
+    axios
+      .get(
+        "https://pokebuildapi.fr/api/v1/pokemon/limit/150") 
+        /* add "/limit/150" at the end of this URL to limit result to 150 pokemon.
+      Remove it if you want the complete list of Pokemon (Warning : your app may be slower to load !).
+      Don't forget put the same number in Navbar => disabled => pokemonIndex */
+      .then((response) => response.data)
+      .then((data) => {
+        console.log(data[pokemonIndex]);
+        setActualPokemon(data[pokemonIndex]);
+      });
+  };
+
+  useEffect(getPokemon, []);
   return (
     <div>
-      {pokemonList.map((creature, index) => (
-        <NavBar
-          key={creature.name}
-          index={index}
-          name={creature.name}
-          setChosenPokemon={setChosenPokemon}
-        />
-      ))}
-
-      <PokemonCard pokemon={pokemonList[chosenPokemon]} />
+    <div className="container">
+      
+      <NavBar
+        pokemonIndex={pokemonIndex}
+        setPokemonIndex={setPokemonIndex}
+        getPokemon={getPokemon}
+      />
+      {actualPokemon && <PokemonCard pokemon={actualPokemon} />}
+    </div>
+    
+    <p className="footer">Réalisé par HazeFury, élève de la WildCodeSchool©2023</p>
     </div>
   );
 }

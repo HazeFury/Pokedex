@@ -29,7 +29,20 @@ body {
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
+  background: url("https://wallpapers.com/images/featured/yq2y7v56tbogy58q.jpg") center/cover;
+
+  
 }
+/*  different wallpaper
+
+https://cdn.wallpapersafari.com/58/17/f4mdJ7.jpg
+https://wallpaper.dog/large/743396.jpg
+https://www.pockettactics.com/wp-content/sites/pockettactics/2023/01/Pok%C3%A9mon-wallpapers-4-1.jpg
+
+
+
+*/
+
 
 h1 {
   font-size: 3.2em;

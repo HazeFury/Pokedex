@@ -6,19 +6,19 @@ img {
 }
 
 figcaption {
-    font-size: 2rem;
+    font-size: 2.5rem;
     font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     text-transform: uppercase;
     margin: 5px auto;
 }
 
 figure {
-    border: 2px solid green;
+    border: 2px solid rgb(255, 255, 255);
     border-radius: 20px;
     width: 400px;
-    height: 375px;
+    height: 550px;
     padding-top: 50px;
-    background-color: rgb(94, 183, 76);
+    background-color: rgba(0, 0, 0, 0.843);
     box-shadow: 4px -6px 18px 0px #000000;
 }
 
