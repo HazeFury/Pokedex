@@ -1,35 +1,45 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useEffect, useState } from "react";
+import axios from "axios";
+import "./App.css";
+
+import PokemonCard from "./components/PokemonCard";
+import NavBar from "./components/NavBar";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [actualPokemon, setActualPokemon] = useState(null);
+  const [pokemonIndex, setPokemonIndex] = useState(0);
+  console.log(pokemonIndex);
 
+  const getPokemon = () => {
+    axios
+      .get(
+        "https://pokebuildapi.fr/api/v1/pokemon/limit/150") 
+        /* add "/limit/150" at the end of this URL to limit result to 150 pokemon.
+      Remove it if you want the complete list of Pokemon (Warning : your app may be slower to load !).
+      Don't forget put the same number in Navbar => disabled => pokemonIndex */
+      .then((response) => response.data)
+      .then((data) => {
+        console.log(data[pokemonIndex]);
+        setActualPokemon(data[pokemonIndex]);
+      });
+  };
+
+  useEffect(getPokemon, []);
   return (
-    <div className="App">
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+    <div>
+    <div className="container">
+      
+      <NavBar
+        pokemonIndex={pokemonIndex}
+        setPokemonIndex={setPokemonIndex}
+        getPokemon={getPokemon}
+      />
+      {actualPokemon && <PokemonCard pokemon={actualPokemon} />}
     </div>
-  )
+    
+    <p className="footer">Réalisé par HazeFury, élève de la WildCodeSchool©2023</p>
+    </div>
+  );
 }
 
-export default App
+export default App;
