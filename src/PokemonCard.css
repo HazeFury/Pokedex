@@ -12,13 +12,13 @@ figcaption {
     margin: 5px auto;
 }
 
-figure {
+.PokemonCardFigure {
     border: 2px solid rgb(255, 255, 255);
     border-radius: 20px;
     width: 400px;
     height: 550px;
     padding-top: 50px;
-    background-color: rgba(0, 0, 0, 0.843);
+    background-color: rgb(74, 74, 74);
     box-shadow: 4px -6px 18px 0px #000000;
 }
 

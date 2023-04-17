@@ -19,6 +19,7 @@ a {
   color: #646cff;
   text-decoration: inherit;
 }
+
 a:hover {
   color: #535bf2;
 }
@@ -29,20 +30,21 @@ body {
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
-  background: url("https://wallpapers.com/images/featured/yq2y7v56tbogy58q.jpg") center/cover;
-
-  
+  background: radial-gradient(
+      circle,
+      rgba(161, 162, 164, 1) 0%,
+      rgba(0, 0, 0, 1) 100%
+    )
+    center/cover fixed;
 }
-/*  different wallpaper
 
+/*  different wallpaper
+background: url("") center/cover fixed;
+https://wallpapers.com/images/featured/yq2y7v56tbogy58q.jpg
 https://cdn.wallpapersafari.com/58/17/f4mdJ7.jpg
 https://wallpaper.dog/large/743396.jpg
 https://www.pockettactics.com/wp-content/sites/pockettactics/2023/01/Pok%C3%A9mon-wallpapers-4-1.jpg
-
-
-
 */
-
 
 h1 {
   font-size: 3.2em;
@@ -60,9 +62,11 @@ button {
   cursor: pointer;
   transition: border-color 0.25s;
 }
+
 button:hover {
   border-color: #646cff;
 }
+
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
@@ -73,9 +77,11 @@ button:focus-visible {
     color: #213547;
     background-color: #ffffff;
   }
+
   a:hover {
     color: #747bff;
   }
+
   button {
     background-color: #f9f9f9;
   }
